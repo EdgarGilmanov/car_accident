@@ -6,9 +6,11 @@ import ru.job4j.police.model.Accident;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @Component
 public class AccidentMem {
+    AtomicInteger atomicInteger = new AtomicInteger(2);
     Map<Integer, Accident> accidents = new HashMap<>();
 
     public AccidentMem() {
@@ -18,5 +20,10 @@ public class AccidentMem {
 
     public Collection<Accident> getAll() {
         return accidents.values();
+    }
+
+    public Accident save(Accident accident) {
+        accidents.put(atomicInteger.incrementAndGet(), accident);
+        return accident;
     }
 }

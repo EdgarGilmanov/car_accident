@@ -10,9 +10,15 @@ import ru.job4j.police.repository.AccidentMem;
 public class IndexControl {
     @Autowired
     AccidentMem store;
+
     @GetMapping("/")
     public String index(Model model) {
         model.addAttribute("accidents", store.getAll());
         return "index";
+    }
+
+    @GetMapping("/newAccident")
+    public String createAccident() {
+        return "accidentEdit";
     }
 }
