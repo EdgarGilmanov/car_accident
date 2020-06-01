@@ -1,12 +1,13 @@
 package ru.job4j.police.model;
 
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
-
+import javax.persistence.*;
 import java.util.Objects;
 
-@Component
+@Entity
+@Table(name = "accident")
 public class Accident {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
     private String text;

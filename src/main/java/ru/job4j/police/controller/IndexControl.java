@@ -1,15 +1,17 @@
 package ru.job4j.police.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import ru.job4j.police.repository.AccidentJdbcTemplate;
+import ru.job4j.police.repository.AccidentHibernate;
 
 @Controller
 public class IndexControl {
-    @Autowired
-    AccidentJdbcTemplate store;
+    private AccidentHibernate store;
+
+    public IndexControl(AccidentHibernate store) {
+        this.store = store;
+    }
 
     @GetMapping("/")
     public String index(Model model) {

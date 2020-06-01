@@ -1,17 +1,19 @@
 package ru.job4j.police.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.job4j.police.model.Accident;
-import ru.job4j.police.repository.AccidentJdbcTemplate;
+import ru.job4j.police.repository.AccidentHibernate;
 
 @Controller
 @ControllerAdvice
 public class AccidentControl {
-    @Autowired
-    AccidentJdbcTemplate store;
+    private AccidentHibernate store;
+
+    public AccidentControl(AccidentHibernate store) {
+        this.store = store;
+    }
 
     @ModelAttribute(value = "accident")
     public Accident accident() {
