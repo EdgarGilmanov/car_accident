@@ -5,13 +5,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.job4j.police.model.Accident;
-import ru.job4j.police.repository.AccidentMem;
+import ru.job4j.police.repository.AccidentJdbcTemplate;
 
 @Controller
 @ControllerAdvice
 public class AccidentControl {
     @Autowired
-    AccidentMem store;
+    AccidentJdbcTemplate store;
 
     @ModelAttribute(value = "accident")
     public Accident accident() {
